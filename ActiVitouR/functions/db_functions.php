@@ -3,9 +3,9 @@
     
     
     
-    define(USERS, "users");
-    define(USERS_ID, "id");
-    define(USERS_USERNAME, "username");
+    define("USERS", "users");
+    define("USERS_ID", "id");
+    define("USERS_USERNAME", "username");
     
     
 
