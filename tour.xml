@@ -1,0 +1,349 @@
+﻿<krpano version="1.20" title="Wicklow">
+  <security cors="">
+    <!--
+    <crossdomainxml url="http://RESSOURCES_URL/crossdomain.xml" />
+    -->
+    <allowdomain domain="*" />
+  </security>
+
+  <autorotate enabled="true"
+            waittime="10"
+            speed="10.0"
+            />
+
+  <krpano tour_firststartactiondone="false" tour_firstlittleplanet="true"/>
+
+  <include url="skin/vtourskin.xml" />
+  <include url="plugins/gyro.xml"/>
+  <include url="plugins/googlemaps.xml"/>
+  <include url="plugins/circle_hotspots.xml"/>
+
+  <!-- <events name="panoevents"
+        keep="true"
+        onloadcomplete="delayedcall(introimage, 0.75, if(layer[introimage], hideintroimage());); 
+                          set(events[panoevents].onloadcomplete,null);"
+        onremovepano="stopdelayedcall(introimage);"
+        preload="true"
+	    	/>
+
+
+  <layer name="introimage"
+         keep="true"
+         url="%CURRENTXML%/Media/Icons/splashscreen.png"
+         align="lefttop"
+         width="100%" height="100%"
+         zorder="2"
+         onloaded="set(alpha,0); tween(alpha,1.0);"
+         onloadcomplete="hideintroimage();"
+         preload="true"
+	   	/> -->
+
+  <action name="showintroimage" >
+    set(layer[introimage].enabled,true);
+    set(layer[introimage].visible,true);
+  </action>
+
+  <action name="hideintroimage">
+    if(layer[introimage].enabled,
+    set(layer[introimage].enabled,false);
+    tween(layer[introimage].alpha, 0.0, 0.5, default, removelayer(introimage));
+    );
+  </action>
+
+
+  <skin_settings maps="true"
+	               maps_type="google"
+	               maps_bing_api_key=""
+	               maps_google_api_key="AIzaSyACDftqMunSPhLxNGvtpPg8Z_V58tNkYGo"
+	               maps_zoombuttons="true"
+	               maps_loadonfirstuse="true"
+	               gyro="true"
+	               gyro_keeplookingdirection="false"
+	               webvr="true"
+	               webvr_keeplookingdirection="true"
+	               webvr_prev_next_hotspots="true"
+	               littleplanetintro="true"
+	               followmousecontrol="false"
+	               title="true"
+	               thumbs="true"
+                 volume="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="true"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_buttons="true"
+	               tooltips_thumbs="true"
+	               tooltips_hotspots="true"
+	               tooltips_mapspots="true"
+	               deeplinking="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+	               loadingtext=""
+	               />
+
+  <include url="vrmenu/vrmenu.xml"/>
+
+  <!-- <plugin name="soundinterface"
+          url="plugins/soundinterface.swf"
+          alturl="plugins/soundinterface.js"
+          rootpath=""
+          preload="true"
+          keep="true"/> -->
+
+
+  <plugin name="soundinterface"
+        url.html5="plugins/soundinterface.js"
+        url.flash="plugins/soundinterface.swf"
+        preload="true"
+        rootpath=""
+        volume="1.0"
+        mute="false"
+        autopause="false"
+        autounlock="true"
+        keep="true"
+        />
+
+  <vrmenu  angle="-45"
+     groups="false"
+     onlycat="false"
+     firstgroup="false"
+     onlygroups="false"
+     displayprevnext="true"
+     width="240"
+     height="120"
+     gpwidth="400"
+     gpheight="200"
+     rows="1"
+     group_rows="2"
+     spacing="20"
+     gpspacing="50"
+     timeout="2000"
+     seen="true"
+     from="-800"
+     closevrmenu="true"
+     fademenu="true"
+     menualpha="50"
+     add_txt_thumb="true"
+     txt_thumb_css="color:#ffffff;font-family:Raleway;font-size:26px;text-align:center"
+     txt_thumb_vcenter="true"
+     txt_thumb_hasshadow="true"
+     add_txt_group="true"
+     txt_group_css="color:#ffffff;font-family:Raleway;font-size:36px;text-align:center"
+     txt_group_vcenter="true"
+     txt_group_hasshadow="true"
+     add_thumb_border="true"
+     thumb_border_border="0 0x000000 1.00"
+     thumb_border_bgcolor="0x000000"
+     thumb_border_bgalpha="0"
+     thumb_border_over_border="2 0xffffff 1.00"
+     thumb_border_over_bgcolor="0x000000"
+     thumb_border_over_bgalpha="0.7"/>
+ 
+ 
+  	<!--
+	    For an alternative skin design either change the <skin_settings> values 
+	    from above or optionally include one of the predefined designs from below.
+	-->
+	 <!-- <include url="skin/vtourskin_design_flat_light.xml"  /> -->
+	<!-- <include url="skin/vtourskin_design_glass.xml"       /> -->
+  <include url="skin/vtourskin_design_ultra_light.xml" /> 
+	<!-- <include url="skin/vtourskin_design_117.xml"         /> -->
+	<!-- <include url="skin/vtourskin_design_117round.xml"    /> -->
+	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
+  <include url="plugins/combobox.xml" />
+
+  <action name="startup" autorun="onstart">
+    if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+    loadscene(get(startscene), null, MERGE);
+    if(startactions !== null, startactions());
+  </action>
+
+  <action name="add_scene_items" scope="local">
+    for(set(i,0), i LT scene.count, inc(i),
+    caller.additem(calc('[img src=[dq]' + scene[get(i)].thumburl +  '[dq] style=[dq]border:1px solid rgba(255,255,255,0.5);width:48px;height:32px;vertical-align:middle;margin-right:8px;[dq]/] '+scene[get(i)].title), calc('loadscene('+i+',null,MERGE,BLEND(0.5))') );
+    );
+  </action>
+
+  <action name="add_scene_items_mobile" scope="local">
+    for(set(i,0), i LT scene.count, inc(i),
+    caller.additem(calc('[img src=[dq]' + scene[get(i)].thumburl
+    +  '[dq] style=[dq]border:1px solid rgba(255,255,255,0.5);width:48px;height:32px;vertical-align:middle;margin-right:8px;[dq]/] '), calc('loadscene('+i+',null,MERGE,BLEND(0.5))') );
+    );
+  </action>
+
+  <combobox name="cbscenesmobile" design="vtour" align="righttop" x="10" y="10" onloaded="add_scene_items_mobile();" devices="mobile"/>
+  <combobox name="cbscenes" design="vtour" align="righttop" x="10" y="10" onloaded="add_scene_items();" devices="desktop|tablet|normal"/>
+  <combobox_design name="vtour" margin="3" open_close_speed="0.25">
+    <style name="combobox_container_style"
+      bgcolor="0xced5dd"
+      bgalpha="0.5"
+      bgborder="1 0x333333 0.5"
+      bgshadow="0 4 10 0x000000 0.3"
+      width.mobile="75"
+			/>
+    <style name="combobox_marker_style"
+      css="color:#222222;"
+      alpha="0.7"
+      bg="false"
+      txtshadow=""
+			/>
+    <style name="combobox_item_style"
+      css="color:#222222;"
+      padding="6"
+      bg="false"
+      bgborder="1 0x333333 0.0"
+      bgcolor="0xFFFFFF"
+      bgalpha="1"
+      txtshadow="0 0 4 0xFFFFFF 1"
+      onoveritem="set(bg,true); set(bgborder, '1 0x333333 0.5');"
+      onoutitem="set(bg,false); set(bgborder, '1 0x333333 0.0');"
+			/>
+  </combobox_design>
+
+  <action name="do_crop_animation" scope="local" args="framewidth, frameheight, framerate">
+    <!-- define local variables -->
+    calc(local.xframes, (caller.imagewidth /framewidth) BOR 0);
+    calc(local.frames, xframes * ((caller.imageheight / frameheight) BOR 0));
+    def(local.frame, integer, 0);
+
+    <!-- set the first frame -->
+    calc(caller.crop, '0|0|' + framewidth + '|' + frameheight);
+
+    <!-- do the animation -->
+    setinterval(calc('crop_anim_' + caller.name), calc(1.0 / framerate),
+    if(caller.loaded,
+    inc(frame);
+    if(frame GE frames, if(caller.onlastframe !== null, callwith(caller, onlastframe() ) ); set(frame,0); );
+    mod(xpos, frame, xframes);
+    div(ypos, frame, xframes);
+    Math.floor(ypos);
+    mul(xpos, framewidth);
+    mul(ypos, frameheight);
+    calc(caller.crop, xpos + '|' + ypos + '|' + framewidth + '|' + frameheight);
+    ,
+    <!-- stop the interval when the hotspot gets removed -->
+    clearinterval(calc('crop_anim_' + caller.name));
+    );
+    );
+  </action>
+
+  <!-- include the files plugin for the responsive scrollable grid photo gallery 
+  <include url="%SWFPATH%/plugins/showtext.xml" />
+  <include url="%SWFPATH%/plugins/rsgp_gallery.xml" />
+  <include url="%SWFPATH%/plugins/rsgp_gallery_style.xml" />-->
+
+  <!-- config 
+  <gallery_settings display_combobox="true"  />
+
+  <gallery_settings help_message1="Click on an image to enlarge it"
+                    help_message2="Sweep screen up/down to change image"
+                    help_message3="Click again on images to come back to gallery"
+                    loading_text="Loading images..."
+                    slideshow_text="Play / Stop Slideshow"
+                    />
+
+  <gallery_settings slideshow_time="4"  />-->
+
+
+  <!--===================================================== SCENE 1 =====================================================-->
+	<scene name="pano1" 
+         title="1. Wicklow - Glendalough Forest" 
+         onstart="" thumburl="panos/1__Wicklow_-_Glendalough_Forest.tiles/thumb.jpg" 
+         lat="" lng="" heading="">
+
+		<view hlookat="808.648" vlookat="0.495" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/1__Wicklow_-_Glendalough_Forest.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/1__Wicklow_-_Glendalough_Forest.tiles/pano_%s.jpg" />
+		</image>
+    
+		<hotspot 
+      name="spot1" 
+      style="skin_hotspotstyle" 
+      ath="-49.701" atv="-15.814" 
+      linkedscene="pano2" 
+      tag="Glendalough Mountain and Upper Lake"/>
+
+	</scene>
+
+  
+  <!--===================================================== SCENE 2 =====================================================-->
+	<scene name="pano2" 
+         title="2. Wicklow - Glendalough Mountain and Upper Lake" onstart="" 
+         thumburl="panos/2__Wicklow_-_Glendalough_Mountain_and_Upper_Lake.tiles/thumb.jpg" 
+         lat="" lng="" heading="">
+
+		<view hlookat="-465.715" vlookat="1.891" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/2__Wicklow_-_Glendalough_Mountain_and_Upper_Lake.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/2__Wicklow_-_Glendalough_Mountain_and_Upper_Lake.tiles/pano_%s.jpg" />
+		</image>
+    
+  		<hotspot 
+      name="spot1" 
+      style="skin_hotspotstyle" 
+      ath="-32.713" atv="1.934" 
+      linkedscene="pano3" 
+      tag="Glendalough Round Tower"/>
+
+	</scene>
+
+  
+  <!--===================================================== SCENE 3 =====================================================-->
+	<scene name="pano3" 
+         title="3. Wicklow - Glendalough Round Tower" onstart="" 
+         thumburl="panos/3__Wicklow_-_Glendalough_Round_Tower.tiles/thumb.jpg" 
+         lat="" lng="" heading="">
+
+		<view hlookat="336.725" vlookat="-23.571" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/3__Wicklow_-_Glendalough_Round_Tower.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/3__Wicklow_-_Glendalough_Round_Tower.tiles/pano_%s.jpg" />
+		</image>
+    
+  		<hotspot 
+      name="spot1" 
+      style="skin_hotspotstyle" 
+      ath="-178.037" atv="3.573" 
+      linkedscene="pano4" 
+      tag="Wicklow Mountains and Lough Tay"/>
+
+	</scene>
+
+  
+  <!--===================================================== SCENE 4 =====================================================-->
+	<scene name="pano4" 
+         title="4. Wicklow - Wicklow Mountains and Lough Tay" onstart="" 
+         thumburl="panos/4__Wicklow_-_Wicklow_Mountains_and_Lough_Tay.tiles/thumb.jpg"
+         lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/4__Wicklow_-_Wicklow_Mountains_and_Lough_Tay.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/4__Wicklow_-_Wicklow_Mountains_and_Lough_Tay.tiles/pano_%s.jpg" />
+		</image>
+    
+  		<hotspot 
+      name="spot1" 
+      style="skin_hotspotstyle" 
+      ath="131.001" atv="-2.080" 
+      linkedscene="pano1" 
+      tag="Glendalough Forest"/>
+
+	</scene>
+
+</krpano>
