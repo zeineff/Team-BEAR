@@ -1,5 +1,5 @@
 <?php
-    $dsn = "mysql:host=localhost;dbname=storog";
+    $dsn = "mysql:host=localhost;dbname=activitour";
     $username = "root";
     $password = "";
     $db;
