@@ -4,7 +4,7 @@ USE activitour;
 
 CREATE TABLE users (
 	id int NOT NULL AUTO_INCREMENT,
-	username varchar(64) NOT NULL,
+	username varchar(64) NOT NULL UNIQUE,
 	password varchar(255) NOT NULL,
 	email varchar(64) NOT NULL,
 	
