@@ -20,6 +20,7 @@
 			<div id="main_nav_right">
 				<li> <a href="map.php">Map</a> </li>
 				<li> <a href="planner.php">Planner</a> </li>
+				<li> <a href="upload.php">Upload</a> </li>
 			</div>
 		</ul>
 	</nav>
