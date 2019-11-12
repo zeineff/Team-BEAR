@@ -5,8 +5,6 @@
 
 <main>
 	<div id="main_box">
-
-
 		<div id="authentication_box">
 			<form action="../functions/file_upload.php" method="post" enctype="multipart/form-data">
 				<label>Select .zip file</label> 
@@ -15,6 +13,7 @@
 
 				<input type="submit" name="Submit" value="Upload" />
 			</form>
+			
 		<?= isset($_GET["message"])? $_GET["message"]: ""?>
 		</div>
 	</div>
