@@ -11,10 +11,6 @@
 <div class="container-fluid">
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="home.php">ActiVitouR</a>
-            </div>
-
             <ul class="nav navbar-nav">
                 <li <?php if ($current_page === "home.php") {echo "class='active'";} ?>>
                     <a href="home.php">Home</a>

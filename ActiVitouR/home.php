@@ -24,11 +24,11 @@
 
                             <!-- Blog Post -->
                             <div class="card mb-4">
-                                <img class="card-img-top" src="img/gforest.jpg" alt="Card image cap">
+                                <img class="card-img-top" src="img/gforest.jpg" alt="Card image cap" style="  width: 750px;height: 400px;">
                                 <div class="card-body">
                                     <h2 class="card-title">Glendalough Forest</h2>
-                                    <p class="card-text">Vist the Glendalough forest in wicklow mountains, The Roundtower and Lough Tay.</p>
-                                    <a href="#" class="btn btn-primary">Read More &rarr;</a>
+                                    <p class="card-text">Vist the Glendalough forest, the Roundtower and Lough Tay.</p>
+                                    <a href="#" class="btn btn-primary">Explore &rarr;</a>
                                 </div>
                             </div>
                             <br>
