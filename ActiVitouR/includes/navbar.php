@@ -1,35 +1,50 @@
 <?php
-    require_once("functions/session.php");
-    
-    $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
-    $parts = explode('/', $path);
-    $current_page = $parts[2];
+require_once("functions/session.php");
+
+$path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+$parts = explode('/', $path);
+$current_page = $parts[2];
 ?>
 
-<script src="js/navbar.js"></script>
-
-<div class="container-fluid">
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li <?php if ($current_page === "home.php") {echo "class='active'";} ?>>
-                    <a href="home.php">Home</a>
+<!-- Navigation -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.php">ActiVitouR</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="about.php">About</a>
                 </li>
-
-                <li <?php if ($current_page === "map.php") {echo "class='active'";} ?>>
-                    <a href="map.php">Map</a>
-               </li>
-               
-                <li <?php if ($current_page === "activity_planner.php") {echo "class='active'";} ?>>
-                    <a href="activity_planner.php">Activity Planner</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="vtours.php">Virtual Tours</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="activity_planner.php">Activity Planner</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="map.php">Map</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.php">Contact</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Account
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                        <a class="dropdown-item" href="login.php">Login</a>
+                        <a class="dropdown-item" href="register.php">Register</a>
+                    </div>
                 </li>
             </ul>
-
             <form
                 class="navbar-form navbar-right"
                 action="search.php"
                 id="search_form"
-            >
+                >
                 <div class="input-group">
                     <input
                         type="text"
@@ -37,7 +52,7 @@
                         placeholder="Search"
                         id="search_bar"
                         name="query"
-                    >
+                        >
 
                     <div class="input-group-btn">
                         <button class="btn btn-default" type="submit">
@@ -46,37 +61,6 @@
                     </div>
                 </div>
             </form>
-
-            <?php if (logged_in()) : ?>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="functions/logout.php">
-                            <span class="glyphicon glyphicon-log-out"></span>
-                            Logout
-                        </a>
-                    </li>
-                </ul>
-
-                <p class="navbar-text navbar-right">
-                    <?php echo $_SESSION["username"]; ?>
-                </p>
-            <?php else : ?>
-                <ul class="nav navbar-nav navbar-right">
-                    <li <?php if ($current_page === "register.php") {echo "class='active'";} ?>>
-                        <a href="register.php">
-                            <span class="glyphicon glyphicon-user"></span>
-                            Create Account
-                        </a>
-                    </li>
-
-                    <li <?php if ($current_page === "login.php") {echo "class='active'";} ?>>
-                        <a href="login.php">
-                            <span class="glyphicon glyphicon-log-in"></span>
-                            Login
-                        </a>
-                    </li>
-                </ul>
-            <?php endif; ?>
         </div>
-    </nav>
-</div>
+    </div>
+</nav>

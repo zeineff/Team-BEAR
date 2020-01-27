@@ -1,26 +1,89 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
     <head>
-        <title>Activity Planner</title>
-        
         <?php require("includes/bootstrap_req.php"); ?>
+
+        <title>Activity Planner</title>
+
     </head>
-    
+
     <body>
+
         <?php require("includes/header.php"); ?>
-        
-        <div class="container-fluid">
-            <div id="main_box">
-		planner
-                
-                <div id="google_map" style="width:100%;height:400px;">
-                    
+
+        <?php require("includes/navbar.php"); ?>
+
+        <!-- Page Content -->
+        <div class="container">
+
+            <!-- Page Heading/Breadcrumbs -->
+            <h1 class="mt-4 mb-3">Activity Planner
+                <small>Subheading</small>
+            </h1>
+
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index.php">Home</a>
+                </li>
+                <li class="breadcrumb-item active">Activity Planner</li>
+            </ol>
+
+            <!-- Image Header -->
+            <img class="img-fluid rounded mb-4" src="http://placehold.it/1200x300" alt="">
+
+            <!-- Marketing Icons Section -->
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <h4 class="card-header">Card Title</h4>
+                        <div class="card-body">
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <h4 class="card-header">Card Title</h4>
+                        <div class="card-body">
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <h4 class="card-header">Card Title</h4>
+                        <div class="card-body">
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!-- /.row -->
 
-            <script src="../js/google_maps.js"></script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgQnfoVMX94wzFbhksI_pG-jWVYYAVe50&callback=initMap"></script>
         </div>
+        <!-- /.container -->
+
+        <!-- Footer -->
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+            </div>
+            <!-- /.container -->
+        </footer>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
     </body>
+
 </html>
